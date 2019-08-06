@@ -101,7 +101,7 @@ STATIC_FILES.forEach(function(x) {STATIC_FILE_URL_HASH[x] = true});
 
 self.addEventListener('install', function(event) {
     event.waitUntil(
-        caches.open(CACHE_NAME)
+        caches.open(STATIC_CACHE_NAME)
       .then(function(cache) {
         console.log('Opened cache');
         return cache.addAll(urlsToCache);
