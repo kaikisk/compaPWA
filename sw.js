@@ -103,7 +103,6 @@ self.addEventListener('install', function(event) {
         caches.open(STATIC_CACHE_NAME)
       .then(function(cache) {
         console.log('saving cache: ' + cache);
-        setTimeout(console.log("temp stop"), 10000);
         return cache.addAll(STATIC_FILES);
       })
     );
