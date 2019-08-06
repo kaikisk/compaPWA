@@ -116,7 +116,9 @@ self.addEventListener('fetch', function(event) {
         caches.match(event.request).then(function(response) {
             console.log("event fire");
             console.dir(response);
-            return response || fetch(event.request)
+            return response || fetch(event.request).then(function(){
+                console.log("response not exit");
+            })
         })
     );
 });
