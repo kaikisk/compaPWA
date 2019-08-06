@@ -90,6 +90,7 @@ var STATIC_FILES = [
     ORIGIN + '/HTML5_005/js/jquery.slideshow.js',
     ORIGIN + '/HTML5_005/js/jquery.smoothscroll.js',
     ORIGIN + '/HTML5_005/js/script.js',
+    ORIGIN + '/HTML5_005/page5.html',
     ORIGIN + '/index.html',
 ];
 
