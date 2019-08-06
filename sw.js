@@ -125,7 +125,7 @@ self.addEventListener('fetch', function(event) {
     event.respondWith(
         caches.match(event.request).then(function(response) {
             console.log("event fire");
-            console.log("response: " + response);
+            console.dir("response: " + response);
             return response || fetch(event.request)
         })
     );
