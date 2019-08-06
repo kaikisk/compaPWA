@@ -3,6 +3,12 @@
 <head>
     <meta http-equiv="content-type"; charset="utf-8">
     <title>PWAの有無でのデータ計測</title>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register("./sw.js");
+        }
+    </script>
+    <link rel="manifest" href="manifest.json"/>
 </head>
 
 <body>
