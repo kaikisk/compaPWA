@@ -121,7 +121,9 @@ self.addEventListener('fetch', function(event) {
 */
 
 self.addEventListener('fetch', function(event) {
+    console.log("fetch start");
     event.respondWith(
+        console.log("event fire");
         caches.match(event.request).then(function(response) {
                 return response || fetch(event.request)
         })
@@ -157,6 +159,7 @@ self.addEventListener('activate', function(event) {
 */
 
 self.addEventListener('activate', function(event) {
+    console.log("activate start");
     event.waitUntil(
         caches.keys()
             .then(function(keys) {
