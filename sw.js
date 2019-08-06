@@ -103,22 +103,12 @@ self.addEventListener('install', function(event) {
     event.waitUntil(
         caches.open(STATIC_CACHE_NAME)
       .then(function(cache) {
-        console.log('Opened cache');
+        console.log('saving cache: ' + cache);
         return cache.addAll(STATIC_FILES);
       })
     );
 });
 
-/*
-self.addEventListener('fetch', function(event) {
-    if(!STATIC_FILE_URL_HASH[event.request.url]) return;
-    //let cache = caches.match(event.request, {cacheName: STATIC_CACHE_NAME});
-    //if(!cache) return;
-    //event.respondWith(cache);
-    event.respondWith(caches.match(event.request, { cacheName: STATIC_CACHE_NAME}));
-});
-
-*/
 
 self.addEventListener('fetch', function(event) {
     console.log("fetch start");
@@ -131,33 +121,10 @@ self.addEventListener('fetch', function(event) {
     );
 });
 
-// self.addEventListener('fetch', event => {
-//     event.respondWith(
-//       caches.match(event.request).then(response => {
-//         return response || fetch(event.request);
-//       })
-//     );
-//   });
 
 const STATIC_CACHE_NAMES = [
     STATIC_CACHE_NAME
 ];
-
-/*
-
-self.addEventListener('activate', function(event) {
-    var cacheDeleting = function(keys) {
-        var promises = [];
-        keys.forEach(function(cacheName) 
-            if(cacheName != STATIC_CACHE_NAME) {
-                promises.push(caches.delete(cacheName));
-            }
-        });
-        return Promise.all(promises);
-    }
-    event.waitUntil(caches.keys().then(cacheDeleting));
-});
-*/
 
 self.addEventListener('activate', function(event) {
     console.log("activate start");
