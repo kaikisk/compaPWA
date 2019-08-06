@@ -5,7 +5,7 @@
     <title>PWAの有無でのデータ計測</title>
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register("./sw.js");
+            navigator.serviceWorker.register("./sw.js", {scope: './'});
         }
     </script>
     <link rel="manifest" href="manifest.json"/>

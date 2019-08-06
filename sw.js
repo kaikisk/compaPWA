@@ -19,6 +19,8 @@ var STATIC_FILES = [
     ORIGIN + '/HTML5_002/images/nav_next_on.png',
     ORIGIN + '/HTML5_002/images/nav_next.png',
     ORIGIN + '/HTML5_002/images/nav_prev.png',
+    ORIGIN + '/HTML5_002/images/photo.png',
+    ORIGIN + '/HTML5_002/images/nav_prev_on.png',
     ORIGIN + '/HTML5_002/images/photo01.jpg',
     ORIGIN + '/HTML5_002/images/photo02.jpg',
     ORIGIN + '/HTML5_002/images/photo03.jpg',
@@ -116,9 +118,7 @@ self.addEventListener('fetch', function(event) {
         caches.match(event.request).then(function(response) {
             console.log("event fire");
             console.dir(response);
-            return response || fetch(event.request).then(function(){
-                console.log("response not exit");
-            })
+            return response || fetch(event.request)
         })
     );
 });
