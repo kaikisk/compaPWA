@@ -104,7 +104,7 @@ self.addEventListener('install', function(event) {
         caches.open(STATIC_CACHE_NAME)
       .then(function(cache) {
         console.log('Opened cache');
-        return cache.addAll(urlsToCache);
+        return cache.addAll(STATIC_FILES);
       })
     );
 });
