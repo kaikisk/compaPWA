@@ -98,42 +98,14 @@ var STATIC_FILES = [
 var STATIC_FILE_URL_HASH = {};
 STATIC_FILES.forEach(function(x) {STATIC_FILE_URL_HASH[x] = true});
 
-/*
-self.addEventListener('install', function(event) {
-    event.waitUntil(
-        caches.open(STATIC_CACHE_NAME)
-        .then(function(cache) {
-            return Promise.all(STATIC_FILES.map(function(url) {
-                return fetch(new Request(url))
-                .then(function(response) {
-                    console.log('requesting : ' + response.url + ', response : ' + response);
-                    if(!response.ok) {
-                        return Promise.reject('Invalid response. URL: ' + response.url + 
-                        'Status: ' + response.status);
-                    }
-                    return cache.put(response.url, response);
-                });
-            }));
-        })
-    )
-})
-*/
 
 self.addEventListener('install', function(event) {
     event.waitUntil(
-        caches.open(STATIC_CACHE_NAME)
-            .then(function(cache) {
-                return Promise.all(
-                    STATIC_FILES.map(function(url) {
-                        return fetch(new Request(url, { cache: 'no-cache', mode: 'no-cors'}))
-                        .then(function(response) {
-                            console.log('saving cache : ' + url);
-                            return cache.put(url, response);
-                        });
-
-                    })
-                );
-            })
+        caches.open(CACHE_NAME)
+      .then(function(cache) {
+        console.log('Opened cache');
+        return cache.addAll(urlsToCache);
+      })
     );
 });
 
@@ -147,6 +119,7 @@ self.addEventListener('fetch', function(event) {
 });
 
 */
+
 self.addEventListener('fetch', function(event) {
     event.respondWith(
         caches.match(event.request).then(function(response) {
@@ -154,6 +127,14 @@ self.addEventListener('fetch', function(event) {
         })
     );
 });
+
+// self.addEventListener('fetch', event => {
+//     event.respondWith(
+//       caches.match(event.request).then(response => {
+//         return response || fetch(event.request);
+//       })
+//     );
+//   });
 
 const STATIC_CACHE_NAMES = [
     STATIC_CACHE_NAME
