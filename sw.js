@@ -12,6 +12,7 @@ var STATIC_FILES = [
     ORIGIN + '/HTML5_001/js/jquery.scrollshow.js',
     ORIGIN + '/HTML5_001/js/jquery.smoothscroll.js',
     ORIGIN + '/HTML5_001/js/script1.js',
+    ORIGIN + '/HTML5_001/page1.html',
     ORIGIN + '/HTML5_002/page2.html',
     ORIGIN + '/HTML5_002/css/style.css',
     ORIGIN + '/HTML5_002/images/banner.png',
