@@ -123,9 +123,9 @@ self.addEventListener('fetch', function(event) {
 self.addEventListener('fetch', function(event) {
     console.log("fetch start");
     event.respondWith(
-        console.log("event fire");
         caches.match(event.request).then(function(response) {
-                return response || fetch(event.request)
+            console.log("event fire");
+            return response || fetch(event.request)
         })
     );
 });
