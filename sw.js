@@ -97,15 +97,13 @@ var STATIC_FILES = [
     ORIGIN + '/index.html',
 ];
 
-var STATIC_FILE_URL_HASH = {};
-STATIC_FILES.forEach(function(x) {STATIC_FILE_URL_HASH[x] = true});
-
 
 self.addEventListener('install', function(event) {
     event.waitUntil(
         caches.open(STATIC_CACHE_NAME)
       .then(function(cache) {
         console.log('saving cache: ' + cache);
+        sleep(5000);
         return cache.addAll(STATIC_FILES);
       })
     );
